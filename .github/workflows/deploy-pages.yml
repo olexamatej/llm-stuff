@@ -21,6 +21,16 @@ jobs:
       - name: Render Quarto project
         run: quarto render
 
+      - name: Ensure root index.html
+        run: |
+          if [ -f "_site/index/index.html" ] && [ ! -f "_site/index.html" ]; then
+            cp "_site/index/index.html" "_site/index.html"
+            if [ -d "_site/index" ]; then
+              cp -r "_site/index/." "_site/."
+              rm -rf "_site/index"
+            fi
+          fi
+
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:

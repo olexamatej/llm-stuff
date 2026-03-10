@@ -1,8 +1,9 @@
 ---
 title: "Security@FIT"
+output-file: index.html
 format:
   revealjs:
-    theme: league
+    theme: moon
     transition: fade
     slide-number: c/t
     incremental: true
